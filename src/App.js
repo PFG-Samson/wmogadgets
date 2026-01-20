@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Package, Award, Phone, Mail, MapPin, Menu, X, ShoppingCart, User, Search, ChevronRight, Star, Check, AlertCircle } from 'lucide-react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ShieldCheck, Award, Phone, Mail, MapPin, ChevronRight, Star, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import About from './About';
+import Contact from './Contact';
+import Header from './Header';
 
-export default function WMOLandingPage() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
+export default function WMOApp() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<WMOLandingPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function WMOLandingPage() {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const slideShowImages = [
@@ -15,12 +29,6 @@ export default function WMOLandingPage() {
     { src: '/images/Patrol-Vest-150x150.png', alt: 'Patrol Vest' },
     { src: '/images/Flexible-Armour-Plates-150x150.png', alt: 'Flexible Armor Plates' }
   ];
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Auto-rotate slideshow
   useEffect(() => {
@@ -97,127 +105,184 @@ export default function WMOLandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Bar */}
-      <div className="bg-black text-white py-2 text-xs sm:text-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <Phone className="w-3 h-3" />
-              <span className="hidden sm:inline">+234 902 441 9637</span>
-            </span>
-            <span className="hidden md:flex items-center gap-1">
-              <Mail className="w-3 h-3" />
-              info@wmogadgets.com
-            </span>
-          </div>
-          <span className="text-amber-600 font-semibold">🎖️ Trusted by Defense Forces Nationwide</span>
-        </div>
-      </div>
+      <Header />
 
-      {/* Header */}
-      <header className={`sticky top-0 bg-white z-50 transition-shadow ${scrolled ? 'shadow-md' : 'border-b'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 sm:h-20">
-            <div className="flex items-center gap-4 sm:gap-8">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-7 h-7 sm:w-9 sm:h-9 text-green-700" />
-                <div>
-                  <span className="text-lg sm:text-2xl font-bold text-green-700 block leading-none">WMO Gadgets</span>
-                  <span className="text-xs text-gray-600 hidden sm:block">Professional Protection</span>
-                </div>
-              </div>
-              <nav className="hidden lg:flex gap-6 xl:gap-8">
-                <a href="#" className="text-gray-700 hover:text-gray-900 font-medium transition">Home</a>
-                <a href="#products" className="text-gray-700 hover:text-gray-900 font-medium transition">Products</a>
-                <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium transition">About</a>
-                <a href="#contact" className="text-gray-700 hover:text-gray-900 font-medium transition">Contact</a>
-              </nav>
-            </div>
-            <div className="flex items-center gap-3 sm:gap-4">
-              <Search className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-900 transition hidden sm:block" />
-              <div className="relative">
-                <ShoppingCart className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-900 transition" />
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
-              </div>
-              <User className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-900 transition hidden sm:block" />
-              <button 
-                className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-t bg-white">
-            <nav className="px-4 py-4 space-y-3">
-              <a href="#" className="block text-gray-700 hover:text-gray-900 font-medium py-2">Home</a>
-              <a href="#products" className="block text-gray-700 hover:text-gray-900 font-medium py-2">Products</a>
-              <a href="#about" className="block text-gray-700 hover:text-gray-900 font-medium py-2">About</a>
-              <a href="#contact" className="block text-gray-700 hover:text-gray-900 font-medium py-2">Contact</a>
-            </nav>
-          </div>
-        )}
-      </header>
-
-      {/* Hero Section - Improved */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white overflow-hidden">
+      {/* Hero Section - Immersive with Animations */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32 relative">
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32 relative w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-green-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
+            {/* Left Content */}
+            <motion.div 
+              className="text-center lg:text-left"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {/* Badge */}
+              <motion.div 
+                className="inline-flex items-center gap-2 bg-green-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
                 <Award className="w-4 h-4" />
                 NIJ CERTIFIED PROTECTION
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-                Protection
-                <br />
-                <span className="text-green-400">You Can Trust</span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+              </motion.div>
+
+              {/* Main Heading with Staggered Words */}
+              <motion.h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                {['Protection', 'You Can'].map((text, idx) => (
+                  <motion.span
+                    key={idx}
+                    className="block"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + (idx * 0.2), duration: 0.6, type: "spring", stiffness: 100 }}
+                  >
+                    {text}
+                  </motion.span>
+                ))}
+                <motion.span
+                  className="block text-green-400"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.6, type: "spring", stiffness: 100 }}
+                >
+                  Trust
+                </motion.span>
+              </motion.h1>
+
+              {/* Subheading */}
+              <motion.p 
+                className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+              >
                 Premium ballistic helmets, vests, and armor plates designed for military, law enforcement, and security professionals across Nigeria and West Africa.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              </motion.p>
+
+              {/* Feature Tags */}
+              <motion.div 
+                className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.6 }}
+              >
+                {[
+                  { icon: ShieldCheck, label: 'Military Grade' },
+                  { icon: Award, label: 'NIJ Certified' },
+                  { icon: Check, label: 'Battle Tested' }
+                ].map((tag, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-700/20 border border-green-700/50 rounded-full text-sm"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.2 + (idx * 0.1), duration: 0.5, type: "spring", stiffness: 120 }}
+                  >
+                    <tag.icon className="w-4 h-4 text-green-400" />
+                    <span>{tag.label}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5, duration: 0.6 }}
+              >
+                <button className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
                   View Products
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-white/20 transition border border-white/20">
                   Request Quote
                 </button>
-              </div>
-              
+              </motion.div>
+
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-8 sm:mt-12 pt-8 border-t border-white/20">
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400">15+</div>
-                  <div className="text-xs sm:text-sm text-gray-400 mt-1">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400">50K+</div>
-                  <div className="text-xs sm:text-sm text-gray-400 mt-1">Units Delivered</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400">100%</div>
-                  <div className="text-xs sm:text-sm text-gray-400 mt-1">NIJ Certified</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative mt-8 lg:mt-0">
-              <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl sm:rounded-3xl aspect-square shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-8xl sm:text-9xl">
+              <motion.div 
+                className="grid grid-cols-3 gap-4 sm:gap-8 mt-8 sm:mt-12 pt-8 border-t border-white/20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.7, duration: 0.6 }}
+              >
+                {[
+                  { number: '15+', label: 'Years Experience' },
+                  { number: '50K+', label: 'Units Delivered' },
+                  { number: '100%', label: 'NIJ Certified' }
+                ].map((stat, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8 + (idx * 0.1), duration: 0.6 }}
+                  >
+                    <motion.div 
+                      className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.9 + (idx * 0.1), duration: 0.5, type: "spring", stiffness: 100 }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-xs sm:text-sm text-gray-400 mt-1">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right Content - Shield Image */}
+            <motion.div 
+              className="relative mt-8 lg:mt-0"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, duration: 0.8, type: "spring", stiffness: 80 }}
+            >
+              <motion.div 
+                className="relative bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl sm:rounded-3xl aspect-square shadow-2xl overflow-hidden"
+                animate={{ 
+                  boxShadow: [
+                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)",
+                    "0 25px 30px -5px rgba(34, 197, 94, 0.3)",
+                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)"
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <motion.div 
+                  className="absolute inset-0 flex items-center justify-center text-8xl sm:text-9xl"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
                   🛡️
-                </div>
-                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2">
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute top-4 right-4 bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.0, duration: 0.6 }}
+                >
                   <Check className="w-4 h-4" />
                   IN STOCK
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3 sm:p-4 rounded-lg shadow-xl">
+                </motion.div>
+
+                <motion.div 
+                  className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3 sm:p-4 rounded-lg shadow-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2, duration: 0.6 }}
+                >
                   <div className="flex items-center gap-3">
                     <div className="bg-green-700 p-2 sm:p-3 rounded-lg">
                       <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -227,19 +292,30 @@ export default function WMOLandingPage() {
                       <div className="text-xs sm:text-sm text-gray-600">Protecting those who protect us</div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
+                </motion.div>
+              </motion.div>
+
               {/* Floating badges */}
-              <div className="hidden md:block absolute -top-4 -left-4 bg-green-700 text-white p-4 rounded-xl shadow-lg transform -rotate-6">
+              <motion.div 
+                className="hidden md:block absolute -top-4 -left-4 bg-green-700 text-white p-4 rounded-xl shadow-lg"
+                initial={{ opacity: 0, rotate: -10, scale: 0 }}
+                animate={{ opacity: 1, rotate: -6, scale: 1 }}
+                transition={{ delay: 1.3, duration: 0.6, type: "spring", stiffness: 100 }}
+              >
                 <div className="text-2xl font-bold">NIJ</div>
                 <div className="text-xs">Certified</div>
-              </div>
-              <div className="hidden md:block absolute -bottom-4 -right-4 bg-black text-white p-4 rounded-xl shadow-lg transform rotate-6">
+              </motion.div>
+
+              <motion.div 
+                className="hidden md:block absolute -bottom-4 -right-4 bg-black text-white p-4 rounded-xl shadow-lg"
+                initial={{ opacity: 0, rotate: 10, scale: 0 }}
+                animate={{ opacity: 1, rotate: 6, scale: 1 }}
+                transition={{ delay: 1.4, duration: 0.6, type: "spring", stiffness: 100 }}
+              >
                 <div className="text-2xl font-bold">24/7</div>
                 <div className="text-xs">Support</div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -249,13 +325,20 @@ export default function WMOLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition">
+              <motion.div 
+                key={idx} 
+                className="flex items-start gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+              >
                 <div className="text-2xl sm:text-3xl flex-shrink-0">{feature.icon}</div>
                 <div>
                   <div className="font-bold text-gray-900 text-sm sm:text-base mb-1">{feature.title}</div>
                   <div className="text-xs sm:text-sm text-gray-600">{feature.text}</div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -563,9 +646,9 @@ export default function WMOLandingPage() {
             <div>
               <h4 className="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Support</h4>
               <ul className="space-y-2 text-xs sm:text-sm">
-                <li><a href="#" className="hover:text-white transition">Documentation</a></li>
-                <li><a href="#" className="hover:text-white transition">FAQ</a></li>
-                <li><a href="#" className="hover:text-white transition">Support</a></li>
+                <li><button className="hover:text-white transition text-left">Documentation</button></li>
+                <li><button className="hover:text-white transition text-left">FAQ</button></li>
+                <li><button className="hover:text-white transition text-left">Support</button></li>
               </ul>
             </div>
             <div>
