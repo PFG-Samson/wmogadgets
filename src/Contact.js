@@ -50,7 +50,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Location',
-      details: ['Lagos, Nigeria', 'West Africa Region'],
+      details: ['54 Balarabe Musa Crescent', 'Victoria Island, Lagos, Nigeria'],
       color: 'bg-green-700'
     }
   ];
@@ -161,8 +161,7 @@ export default function Contact() {
               className="flex items-center justify-center"
             >
               <LocationMap 
-                location="Lagos, Nigeria" 
-                coordinates="6.5244° N, 3.3792° E"
+                // Map is internally centered on the HQ coordinates
               />
             </motion.div>
           </div>

@@ -1,25 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { ShieldCheck, Award, Phone, Mail, MapPin, ChevronRight, Star, Check } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import About from './About';
 import Contact from './Contact';
+import Products from './Products';
 import Header from './Header';
+import { MotionProvider } from './ui/MotionProvider';
+import { PageTransition } from './ui/PageTransition';
+import { ScrollProgress } from './ui/ScrollProgress';
+import { Reveal } from './ui/Reveal';
+import { TiltCard } from './ui/TiltCard';
+import { CartProvider } from './CartContext';
 
 export default function WMOApp() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<WMOLandingPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+    <MotionProvider>
+      <CartProvider>
+        <Router>
+          <ScrollProgress />
+          <AnimatedRoutes />
+        </Router>
+      </CartProvider>
+    </MotionProvider>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><WMOLandingPage /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
       </Routes>
-    </Router>
+    </AnimatePresence>
   );
 }
 
 function WMOLandingPage() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const navigate = useNavigate();
 
   const slideShowImages = [
     { src: '/images/ach.jpg', alt: 'Advanced Combat Helmet' },
@@ -120,52 +144,37 @@ function WMOLandingPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              {/* Badge */}
+              {/* Company badge */}
               <motion.div 
-                className="inline-flex items-center gap-2 bg-green-700 text-white px-4 py-2 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6"
+                className="inline-flex items-center gap-2 bg-black/60 text-white px-4 py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide uppercase mb-3 sm:mb-4"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
               >
-                <Award className="w-4 h-4" />
-                NIJ CERTIFIED PROTECTION
+                <ShieldCheck className="w-4 h-4 text-green-400" />
+                WMO Gadgets • Ballistic Protection & Tactical Gear
               </motion.div>
 
-              {/* Main Heading with Staggered Words */}
+              {/* Main Heading */}
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4 leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.7 }}
               >
-                {['Protection', 'You Can'].map((text, idx) => (
-                  <motion.span
-                    key={idx}
-                    className="block"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + (idx * 0.2), duration: 0.6, type: "spring", stiffness: 100 }}
-                  >
-                    {text}
-                  </motion.span>
-                ))}
-                <motion.span
-                  className="block text-green-400"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.6, type: "spring", stiffness: 100 }}
-                >
-                  Trust
-                </motion.span>
+                <span className="block">Ballistic Protection</span>
+                <span className="block text-green-400">For Those Who Serve</span>
               </motion.h1>
 
               {/* Subheading */}
               <motion.p 
-                className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
+                className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
               >
-                Premium ballistic helmets, vests, and armor plates designed for military, law enforcement, and security professionals across Nigeria and West Africa.
+                WMO Gadgets supplies NIJ-certified combat helmets, ballistic vests, armor plates and tactical accessories
+                for military, law enforcement and private security teams across Nigeria and West Africa.
               </motion.p>
 
               {/* Feature Tags */}
@@ -200,11 +209,17 @@ function WMOLandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.6 }}
               >
-                <button className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
+                <button
+                  onClick={() => navigate('/products')}
+                  className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+                >
                   View Products
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-white/20 transition border border-white/20">
+                <button
+                  onClick={() => navigate('/contact')}
+                  className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-white/20 transition border border-white/20"
+                >
                   Request Quote
                 </button>
               </motion.div>
@@ -241,79 +256,73 @@ function WMOLandingPage() {
               </motion.div>
             </motion.div>
 
-            {/* Right Content - Shield Image */}
+            {/* Right Content - Product imagery collage */}
             <motion.div 
-              className="relative mt-8 lg:mt-0"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.8, type: "spring", stiffness: 80 }}
+              className="relative mt-10 lg:mt-0 h-[360px] sm:h-[420px] lg:h-[460px]"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8, type: "spring", stiffness: 80 }}
             >
-              <motion.div 
-                className="relative bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl sm:rounded-3xl aspect-square shadow-2xl overflow-hidden"
-                animate={{ 
-                  boxShadow: [
-                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)",
-                    "0 25px 30px -5px rgba(34, 197, 94, 0.3)",
-                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)"
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
+              <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-green-900/40 rounded-3xl" />
+
+              <div className="relative h-full grid grid-cols-2 gap-3 sm:gap-4">
                 <motion.div 
-                  className="absolute inset-0 flex items-center justify-center text-8xl sm:text-9xl"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="col-span-1 row-span-2 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/40"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: 'spring', stiffness: 120 }}
                 >
-                  🛡️
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute top-4 right-4 bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg font-bold text-xs sm:text-sm shadow-lg flex items-center gap-2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.0, duration: 0.6 }}
-                >
-                  <Check className="w-4 h-4" />
-                  IN STOCK
+                  <img
+                    src="/images/ach.jpg"
+                    alt="WMO ballistic combat helmet"
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
 
                 <motion.div 
-                  className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3 sm:p-4 rounded-lg shadow-xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6 }}
+                  className="rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black/40"
+                  whileHover={{ scale: 1.03 }}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="bg-green-700 p-2 sm:p-3 rounded-lg">
-                      <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-gray-900 text-sm sm:text-base">Every Life Counts</div>
-                      <div className="text-xs sm:text-sm text-gray-600">Protecting those who protect us</div>
-                    </div>
-                  </div>
+                  <img
+                    src="/images/Patrol-Vest-150x150.png"
+                    alt="WMO patrol ballistic vest"
+                    className="h-full w-full object-cover"
+                  />
                 </motion.div>
+
+                <motion.div 
+                  className="rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black/40"
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <img
+                    src="/images/Flexible-Armour-Plates-150x150.png"
+                    alt="WMO flexible armour plates"
+                    className="h-full w-full object-cover"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Top-right label */}
+              <motion.div 
+                className="absolute -top-4 right-4 bg-green-600 text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold shadow-lg flex items-center gap-2"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.5 }}
+              >
+                <ShieldCheck className="w-4 h-4" />
+                NIJ Certified Gear
               </motion.div>
 
-              {/* Floating badges */}
+              {/* Bottom-left caption */}
               <motion.div 
-                className="hidden md:block absolute -top-4 -left-4 bg-green-700 text-white p-4 rounded-xl shadow-lg"
-                initial={{ opacity: 0, rotate: -10, scale: 0 }}
-                animate={{ opacity: 1, rotate: -6, scale: 1 }}
-                transition={{ delay: 1.3, duration: 0.6, type: "spring", stiffness: 100 }}
+                className="absolute -bottom-4 left-4 bg-white/95 text-gray-900 px-4 py-3 rounded-2xl shadow-xl text-xs sm:text-sm max-w-xs"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
               >
-                <div className="text-2xl font-bold">NIJ</div>
-                <div className="text-xs">Certified</div>
-              </motion.div>
-
-              <motion.div 
-                className="hidden md:block absolute -bottom-4 -right-4 bg-black text-white p-4 rounded-xl shadow-lg"
-                initial={{ opacity: 0, rotate: 10, scale: 0 }}
-                animate={{ opacity: 1, rotate: 6, scale: 1 }}
-                transition={{ delay: 1.4, duration: 0.6, type: "spring", stiffness: 100 }}
-              >
-                <div className="text-2xl font-bold">24/7</div>
-                <div className="text-xs">Support</div>
+                <div className="font-semibold">Helmets • Vests • Plates</div>
+                <div className="text-[11px] text-gray-600">
+                  Complete ballistic protection systems engineered for frontline professionals.
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -425,11 +434,20 @@ function WMOLandingPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
             {categories.map((cat, idx) => (
-              <div key={idx} className="group bg-white p-4 sm:p-6 rounded-xl text-center hover:shadow-xl transition-all cursor-pointer border-2 border-transparent hover:border-yellow-400 transform hover:-translate-y-1">
-                <div className="text-4xl sm:text-5xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform">{cat.icon}</div>
-                <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">{cat.name}</div>
-                <div className="text-xs sm:text-sm text-gray-500">{cat.count} Products</div>
-              </div>
+              <Reveal key={idx} delay={idx * 0.05}>
+                <Link
+                  to={cat.name === 'Combat Helmets' || cat.name === 'Ballistic Vests'
+                    ? `/products?category=${encodeURIComponent(cat.name)}`
+                    : '/products'}
+                  className="block"
+                >
+                  <TiltCard className="group bg-white p-4 sm:p-6 rounded-xl text-center hover:shadow-xl transition-all cursor-pointer border-2 border-transparent hover:border-yellow-400">
+                    <div className="text-4xl sm:text-5xl mb-2 sm:mb-3 group-hover:scale-110 transition-transform">{cat.icon}</div>
+                    <div className="text-sm sm:text-base font-bold text-gray-900 mb-1">{cat.name}</div>
+                    <div className="text-xs sm:text-sm text-gray-500">{cat.count} Products</div>
+                  </TiltCard>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -443,46 +461,52 @@ function WMOLandingPage() {
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">Featured Products</h2>
               <p className="text-gray-600 text-sm sm:text-base">Our most popular protection solutions</p>
             </div>
-            <button className="text-yellow-600 hover:text-yellow-700 font-bold flex items-center gap-2 group">
+            <button
+              onClick={() => navigate('/products')}
+              className="text-yellow-600 hover:text-yellow-700 font-bold flex items-center gap-2 group"
+            >
               View All Products
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {products.map((product, idx) => (
-              <div key={idx} className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer">
-                <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 aspect-square overflow-hidden flex items-center justify-center">
-                  <img 
-                    src={product.image} 
-                    alt={product.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute top-3 right-3 bg-green-700 text-white px-3 py-1 rounded-full text-xs font-bold">
-                    {product.level}
+              <Reveal key={idx} delay={idx * 0.06}>
+                <TiltCard className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer">
+                  <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 aspect-square overflow-hidden flex items-center justify-center">
+                    <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity [background:radial-gradient(circle_at_30%_20%,rgba(34,197,94,0.18),transparent_45%)]" />
+                    <img 
+                      src={product.image} 
+                      alt={product.imageAlt}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 right-3 bg-green-700 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      {product.level}
+                    </div>
                   </div>
-                </div>
-                <div className="p-4 sm:p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">{product.category}</span>
+                  <div className="p-4 sm:p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">{product.category}</span>
+                    </div>
+                    <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 group-hover:text-green-700 transition">{product.name}</h3>
+                    <p className="text-xs text-gray-600 mb-3 line-clamp-2">{product.description}</p>
+                    <div className="space-y-1 mb-4">
+                      {product.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                          <Check className="w-3 h-3 text-green-700 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-between pt-3 border-t">
+                      <p className="text-gray-900 font-bold text-sm sm:text-base">{product.price}</p>
+                      <button className="bg-green-700 text-white px-3 sm:px-4 py-2 rounded-lg font-semibold hover:bg-green-800 transition text-xs sm:text-sm">
+                        Inquire
+                      </button>
+                    </div>
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 group-hover:text-green-700 transition">{product.name}</h3>
-                  <p className="text-xs text-gray-600 mb-3 line-clamp-2">{product.description}</p>
-                  <div className="space-y-1 mb-4">
-                    {product.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-600">
-                        <Check className="w-3 h-3 text-green-700 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-3 border-t">
-                    <p className="text-gray-900 font-bold text-sm sm:text-base">{product.price}</p>
-                    <button className="bg-green-700 text-white px-3 sm:px-4 py-2 rounded-lg font-semibold hover:bg-green-800 transition text-xs sm:text-sm">
-                      Inquire
-                    </button>
-                  </div>
-                </div>
-              </div>
+                </TiltCard>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -618,7 +642,10 @@ function WMOLandingPage() {
           <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto">
             Contact our team for a consultation and find the right protection solution for your needs
           </p>
-          <button className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition text-sm sm:text-base">
+          <button
+            onClick={() => navigate('/contact')}
+            className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition text-sm sm:text-base"
+          >
             Get in Touch
           </button>
         </div>
@@ -638,9 +665,15 @@ function WMOLandingPage() {
             <div>
               <h4 className="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <ul className="space-y-2 text-xs sm:text-sm">
-                <li><a href="#products" className="hover:text-white transition">Products</a></li>
-                <li><a href="#about" className="hover:text-white transition">About Us</a></li>
-                <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
+                <li>
+                  <Link to="/products" className="hover:text-white transition">Products</Link>
+                </li>
+                <li>
+                  <Link to="/about" className="hover:text-white transition">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-white transition">Contact</Link>
+                </li>
               </ul>
             </div>
             <div>

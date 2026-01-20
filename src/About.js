@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Target, Eye, Award, Users, Zap, CheckCircle, ArrowRight } from 'lucide-react';
 import Header from './Header';
 
 export default function About() {
+  const navigate = useNavigate();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -422,6 +424,7 @@ export default function About() {
             viewport={{ once: true }}
             whileHover={{ scale: 1.1, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)" }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/contact')}
             className="bg-green-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg inline-flex items-center gap-2 group"
           >
             Get in Touch
