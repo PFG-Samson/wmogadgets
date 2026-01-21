@@ -63,8 +63,8 @@ function WMOLandingPage() {
   }, [slideShowImages.length]);
 
   const products = [
-    { 
-      name: 'Advanced Combat Helmet (ACH)', 
+    {
+      name: 'Advanced Combat Helmet (ACH)',
       price: 'Request Quote',
       image: '/images/ach.jpg',
       imageAlt: 'Advanced Combat Helmet',
@@ -73,8 +73,8 @@ function WMOLandingPage() {
       description: 'Based on the MICH design, the ACH provides an improved helmet to soldiers, replacing the older PASGT. It provides increased 9mm bullet protection. Comes with pad suspension system and four-point chinstrap.',
       features: ['9mm Protection', 'Pad Suspension', '4-Point Chinstrap', 'Improved Design']
     },
-    { 
-      name: 'Lightweight Helmet (LWH)', 
+    {
+      name: 'Lightweight Helmet (LWH)',
       price: 'Request Quote',
       image: '/images/LWH.png',
       imageAlt: 'Lightweight Helmet',
@@ -83,8 +83,8 @@ function WMOLandingPage() {
       description: 'A modern lightweight ballistic helmet offering enhanced protection with reduced weight for extended wear comfort. Features improved 9mm bullet protection with pad suspension system and four-point chinstrap for secure fit.',
       features: ['Lightweight', '9mm Protection', 'Pad Suspension', '4-Point Chinstrap']
     },
-    { 
-      name: 'Modular Integrated Communications Helmet (MICH)', 
+    {
+      name: 'Modular Integrated Communications Helmet (MICH)',
       price: 'Request Quote',
       image: '/images/MICH.png',
       imageAlt: 'MICH Helmet',
@@ -93,8 +93,8 @@ function WMOLandingPage() {
       description: 'A special operations lightweight ballistic helmet that incorporates excellent ballistic and non-ballistic protection with the ability to integrate most tactical communication gadgets used by SOF. Comes with standard pad suspension and four-point chinstrap.',
       features: ['SOF Rated', 'Communications Ready', 'Ballistic Protection', 'Light Weight']
     },
-    { 
-      name: 'Personal Armor System for Ground Troops (PASGT)', 
+    {
+      name: 'Personal Armor System for Ground Troops (PASGT)',
       price: 'Request Quote',
       image: '/images/ach.jpg',
       imageAlt: 'PASGT Helmet',
@@ -134,18 +134,18 @@ function WMOLandingPage() {
       {/* Hero Section - Immersive with Animations */}
       <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32 relative w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
-            <motion.div 
+            <motion.div
               className="text-center lg:text-left"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               {/* Company badge */}
-              <motion.div 
+              <motion.div
                 className="inline-flex items-center gap-2 bg-black/60 text-white px-4 py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wide uppercase mb-3 sm:mb-4"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -156,8 +156,8 @@ function WMOLandingPage() {
               </motion.div>
 
               {/* Main Heading */}
-              <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4 leading-tight"
+              <motion.h1
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 sm:mb-6 leading-[1.1]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.7 }}
@@ -167,8 +167,8 @@ function WMOLandingPage() {
               </motion.h1>
 
               {/* Subheading */}
-              <motion.p 
-                className="text-sm sm:text-base md:text-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"
+              <motion.p
+                className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-10 w-full lg:mx-0 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -178,7 +178,7 @@ function WMOLandingPage() {
               </motion.p>
 
               {/* Feature Tags */}
-              <motion.div 
+              <motion.div
                 className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -191,41 +191,41 @@ function WMOLandingPage() {
                 ].map((tag, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex items-center gap-2 px-4 py-2 bg-green-700/20 border border-green-700/50 rounded-full text-sm"
+                    className="flex items-center gap-3 px-6 py-3 bg-green-700/20 border border-green-700/50 rounded-full text-base sm:text-lg font-medium"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.2 + (idx * 0.1), duration: 0.5, type: "spring", stiffness: 120 }}
                   >
-                    <tag.icon className="w-4 h-4 text-green-400" />
+                    <tag.icon className="w-5 h-5 text-green-400" />
                     <span>{tag.label}</span>
                   </motion.div>
                 ))}
               </motion.div>
 
               {/* CTA Buttons */}
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              <motion.div
+                className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.6 }}
               >
                 <button
                   onClick={() => navigate('/products')}
-                  className="bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
+                  className="bg-green-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3 group"
                 >
                   View Products
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </button>
                 <button
                   onClick={() => navigate('/contact')}
-                  className="bg-white/10 backdrop-blur-sm text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold hover:bg-white/20 transition border border-white/20"
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-lg sm:text-xl hover:bg-white/20 transition border border-white-20 transform hover:-translate-y-1"
                 >
                   Request Quote
                 </button>
               </motion.div>
 
               {/* Stats */}
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-3 gap-4 sm:gap-8 mt-8 sm:mt-12 pt-8 border-t border-white/20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -242,23 +242,23 @@ function WMOLandingPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.8 + (idx * 0.1), duration: 0.6 }}
                   >
-                    <motion.div 
-                      className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-400"
+                    <motion.div
+                      className="text-3xl sm:text-4xl md:text-5xl font-black text-green-400"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ delay: 1.9 + (idx * 0.1), duration: 0.5, type: "spring", stiffness: 100 }}
                     >
                       {stat.number}
                     </motion.div>
-                    <div className="text-xs sm:text-sm text-gray-400 mt-1">{stat.label}</div>
+                    <div className="text-sm sm:text-base md:text-lg text-gray-400 mt-2 font-medium tracking-wide">{stat.label}</div>
                   </motion.div>
                 ))}
               </motion.div>
             </motion.div>
 
             {/* Right Content - Product imagery collage */}
-            <motion.div 
-              className="relative mt-10 lg:mt-0 h-[360px] sm:h-[420px] lg:h-[460px]"
+            <motion.div
+              className="relative mt-12 lg:mt-0 h-[450px] sm:h-[550px] lg:h-[650px] w-full"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8, type: "spring", stiffness: 80 }}
@@ -266,7 +266,7 @@ function WMOLandingPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-green-900/40 rounded-3xl" />
 
               <div className="relative h-full grid grid-cols-2 gap-3 sm:gap-4">
-                <motion.div 
+                <motion.div
                   className="col-span-1 row-span-2 rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/40"
                   whileHover={{ scale: 1.03 }}
                   transition={{ type: 'spring', stiffness: 120 }}
@@ -278,7 +278,7 @@ function WMOLandingPage() {
                   />
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black/40"
                   whileHover={{ scale: 1.03 }}
                 >
@@ -289,7 +289,7 @@ function WMOLandingPage() {
                   />
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-black/40"
                   whileHover={{ scale: 1.03 }}
                 >
@@ -302,7 +302,7 @@ function WMOLandingPage() {
               </div>
 
               {/* Top-right label */}
-              <motion.div 
+              <motion.div
                 className="absolute -top-4 right-4 bg-green-600 text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold shadow-lg flex items-center gap-2"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -313,7 +313,7 @@ function WMOLandingPage() {
               </motion.div>
 
               {/* Bottom-left caption */}
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-4 left-4 bg-white/95 text-gray-900 px-4 py-3 rounded-2xl shadow-xl text-xs sm:text-sm max-w-xs"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -334,8 +334,8 @@ function WMOLandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((feature, idx) => (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 className="flex items-start gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -367,9 +367,8 @@ function WMOLandingPage() {
                 {slideShowImages.map((slide, idx) => (
                   <div
                     key={idx}
-                    className={`absolute inset-0 transition-opacity duration-1000 flex items-center justify-center ${
-                      activeSlide === idx ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute inset-0 transition-opacity duration-1000 flex items-center justify-center ${activeSlide === idx ? 'opacity-100' : 'opacity-0'
+                      }`}
                   >
                     <img
                       src={slide.src}
@@ -400,11 +399,10 @@ function WMOLandingPage() {
                   <button
                     key={idx}
                     onClick={() => setActiveSlide(idx)}
-                    className={`w-3 h-3 rounded-full transition ${
-                      activeSlide === idx
-                        ? 'bg-green-700 w-8'
-                        : 'bg-white/60 hover:bg-white/80'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition ${activeSlide === idx
+                      ? 'bg-green-700 w-8'
+                      : 'bg-white/60 hover:bg-white/80'
+                      }`}
                   />
                 ))}
               </div>
@@ -426,9 +424,9 @@ function WMOLandingPage() {
       {/* Shop by Category */}
       <section className="py-12 sm:py-16 lg:py-20" id="products">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Shop by Category</h2>
-            <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4 sm:mb-6">Shop by Category</h2>
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Browse our comprehensive range of certified ballistic protection equipment
             </p>
           </div>
@@ -456,10 +454,10 @@ function WMOLandingPage() {
       {/* Featured Products - Improved */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 sm:mb-12">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10 sm:mb-14">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">Featured Products</h2>
-              <p className="text-gray-600 text-sm sm:text-base">Our most popular protection solutions</p>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-4">Featured Products</h2>
+              <p className="text-lg sm:text-xl text-gray-600">Our most popular protection solutions</p>
             </div>
             <button
               onClick={() => navigate('/products')}
@@ -475,8 +473,8 @@ function WMOLandingPage() {
                 <TiltCard className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer">
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 aspect-square overflow-hidden flex items-center justify-center">
                     <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity [background:radial-gradient(circle_at_30%_20%,rgba(34,197,94,0.18),transparent_45%)]" />
-                    <img 
-                      src={product.image} 
+                    <img
+                      src={product.image}
                       alt={product.imageAlt}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -554,7 +552,7 @@ function WMOLandingPage() {
                   </button>
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl p-6 sm:p-8 text-white flex items-center gap-4 sm:gap-6 hover:shadow-xl transition transform hover:scale-105 cursor-pointer">
                 <div className="bg-white rounded-xl sm:rounded-2xl w-20 h-20 sm:w-28 sm:h-28 flex items-center justify-center text-4xl sm:text-5xl flex-shrink-0 shadow-lg">
                   🦺
@@ -576,9 +574,9 @@ function WMOLandingPage() {
       {/* Testimonials */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Trusted by Professionals</h2>
-            <p className="text-gray-400 text-sm sm:text-base">See what our clients say about our products</p>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 sm:mb-6">Trusted by Professionals</h2>
+            <p className="text-lg sm:text-xl text-gray-400">See what our clients say about our products</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             {testimonials.map((testimonial, idx) => (
@@ -602,12 +600,12 @@ function WMOLandingPage() {
       {/* Why Choose Us */}
       <section className="py-12 sm:py-16 lg:py-20" id="about">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center border-b pb-16 sm:pb-24">
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 mb-6 sm:mb-8">
                 Why Choose WMO Gadgets?
               </h2>
-              <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
+              <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed">
                 With over 15 years of experience, we've become Nigeria's leading supplier of ballistic protection equipment. Our commitment to quality and safety has made us the trusted choice for defense and security organizations.
               </p>
               <div className="space-y-4">
@@ -636,10 +634,10 @@ function WMOLandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-black to-gray-900 text-white py-12 sm:py-16 lg:py-20">
+      <section className="bg-gradient-to-r from-black to-gray-900 text-white py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">Ready to Protect What Matters?</h2>
-          <p className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-6 sm:mb-8">Ready to Protect What Matters?</h2>
+          <p className="text-xl sm:text-2xl text-gray-300 mb-10 sm:mb-14 max-w-3xl mx-auto leading-relaxed">
             Contact our team for a consultation and find the right protection solution for your needs
           </p>
           <button
