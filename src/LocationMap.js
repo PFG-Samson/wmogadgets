@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const ADDRESS_QUERY = encodeURIComponent(
-  '54 Balarabe Musa Crescent, Victoria Island, Lagos, Nigeria'
-);
+// OpenStreetMap embed for the address area
 // OpenStreetMap embed for the address area
 const OSM_EMBED_SRC = `https://www.openstreetmap.org/export/embed.html?bbox=3.424%2C6.428%2C3.432%2C6.434&layer=mapnik&marker=6.4312%2C3.4284`;
 const OSM_LINK = `https://www.openstreetmap.org/?mlat=6.4312&mlon=3.4284#map=17/6.4312/3.4284`;
