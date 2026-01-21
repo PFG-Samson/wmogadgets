@@ -43,10 +43,10 @@ export default function Header() {
           <div className="flex justify-between items-center h-16 sm:h-20">
             <div className="flex items-center gap-4 sm:gap-8">
               <Link to="/" className="flex items-center gap-2 group">
-                <motion.img 
-                  src="/images/wmo-logo.jpg" 
-                  alt="WMO Gadgets Logo" 
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg shadow-md"
+                <motion.img
+                  src="/images/wmo-logo.jpg"
+                  alt="WMO Gadgets Logo"
+                  className="w-20 h-20 sm:w-28 sm:h-28 object-contain rounded-xl shadow-lg"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 />
@@ -67,7 +67,7 @@ export default function Header() {
                 </span>
               </div>
               <User className="w-5 h-5 text-gray-600 cursor-pointer hover:text-gray-900 transition hidden sm:block" />
-              <button 
+              <button
                 className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
@@ -78,7 +78,7 @@ export default function Header() {
             </div>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
