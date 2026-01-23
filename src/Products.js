@@ -1,15 +1,14 @@
 import React, { useMemo } from 'react';
-import { Check, ChevronRight, ShieldCheck, Trash2, Plus, Minus } from 'lucide-react';
-import { useSearchParams } from 'react-router-dom';
+import { Check, ChevronRight, ShieldCheck } from 'lucide-react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import { Reveal } from './ui/Reveal';
 import { TiltCard } from './ui/TiltCard';
-import { useCart } from './CartContext';
 
 const products = [
-  { 
+  {
     id: 'ach',
-    name: 'Advanced Combat Helmet (ACH)', 
+    name: 'Advanced Combat Helmet (ACH)',
     price: 185000,
     priceLabel: 'From ₦185,000',
     image: '/images/ach.jpg',
@@ -19,9 +18,9 @@ const products = [
     description: 'Modern ACH design with enhanced 9mm ballistic protection, pad suspension, and secure four-point chinstrap.',
     features: ['9mm Protection', 'Pad Suspension', '4-Point Chinstrap', 'Improved Design']
   },
-  { 
+  {
     id: 'lwh',
-    name: 'Lightweight Helmet (LWH)', 
+    name: 'Lightweight Helmet (LWH)',
     price: 195000,
     priceLabel: 'From ₦195,000',
     image: '/images/LWH.png',
@@ -31,9 +30,9 @@ const products = [
     description: 'Lightweight ballistic helmet designed for extended missions where comfort and protection are critical.',
     features: ['Reduced Weight', 'High Comfort', 'NIJ Certified', 'Field Tested']
   },
-  { 
+  {
     id: 'mich',
-    name: 'MICH Special Operations Helmet', 
+    name: 'MICH Special Operations Helmet',
     price: 225000,
     priceLabel: 'From ₦225,000',
     image: '/images/MICH.png',
@@ -43,9 +42,9 @@ const products = [
     description: 'MICH helmet optimized for communications integration and special operations requirements.',
     features: ['Comms Ready', 'SOF Rated', 'Ballistic Protection', 'Low Profile']
   },
-  { 
+  {
     id: 'plate-carrier',
-    name: 'Tactical Plate Carrier', 
+    name: 'Tactical Plate Carrier',
     price: 265000,
     priceLabel: 'From ₦265,000',
     image: '/images/Hptplate-Carrier-150x150.png',
@@ -112,6 +111,7 @@ export default function Products() {
   );
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const initialCategory = searchParams.get('category') || 'All';
   const activeCategory = categories.includes(initialCategory) ? initialCategory : 'All';
 
@@ -120,252 +120,124 @@ export default function Products() {
       ? products
       : products.filter((p) => p.category === activeCategory);
 
-  const { items, itemCount, subtotal, addItem, removeItem, decrementItem, clearCart } = useCart();
-
   const handleCategoryClick = (category) => {
     const next = category === 'All' ? {} : { category };
     setSearchParams(next, { replace: true });
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white selection:bg-white/20">
       <Header />
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white py-20 sm:py-24 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 opacity-40 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')]" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
-            <div className="max-w-2xl text-center lg:text-left">
-              <p className="inline-flex items-center gap-2 rounded-full bg-green-700/30 px-4 py-1 text-xs sm:text-sm font-semibold tracking-wide">
-                <ShieldCheck className="h-4 w-4" />
-                NIJ-Certified Protective Equipment
-              </p>
-              <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Shop WMO
-                <span className="block text-green-400">Protection Systems</span>
-              </h1>
-              <p className="mt-4 text-sm sm:text-base text-gray-200 max-w-xl mx-auto lg:mx-0">
-                Explore our curated selection of combat helmets, ballistic vests, and tactical armor designed for military, law enforcement, and security professionals.
-              </p>
-            </div>
+      <section className="relative h-[40vh] flex items-center overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0 bg-black z-0" />
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/9988766/pexels-photo-9988766.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-20 grayscale z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 relative z-30 w-full">
+          <div className="max-w-3xl">
+            <span className="text-[10px] font-bold tracking-[0.5em] text-gray-500 mb-8 block uppercase">CAPABILITIES</span>
+            <h1 className="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter mb-8 leading-none uppercase">
+              TACTICAL <br /> <span className="text-gray-500">SYSTEMS</span>
+            </h1>
+            <p className="text-xl text-gray-400 font-medium">
+              NIJ-Certified protective equipment engineered for mission success.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Product grid + cart */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-10 lg:items-start">
-            {/* Main content */}
-            <div className="flex-1">
-              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
-                <div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">All Products</h2>
-                  <p className="mt-1 text-sm sm:text-base text-gray-600">
-                    Add items to your cart and send us a request for a tailored quote.
-                  </p>
-                </div>
-              </div>
-
-              {/* Category filter pills */}
-              <div className="mb-6 flex flex-wrap gap-2">
-                {categories.map((cat) => {
-                  const isActive = cat === activeCategory;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => handleCategoryClick(cat)}
-                      className={`rounded-full border px-3 py-1 text-xs sm:text-sm font-semibold transition ${
-                        isActive
-                          ? 'border-green-700 bg-green-700 text-white shadow-sm'
-                          : 'border-gray-300 bg-white text-gray-700 hover:border-green-600 hover:text-green-700'
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-                {filteredProducts.map((product, idx) => (
-                  <Reveal key={product.id} delay={idx * 0.06}>
-                    <TiltCard className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all cursor-pointer h-full flex flex-col">
-                      <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 aspect-square overflow-hidden flex items-center justify-center">
-                        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity [background:radial-gradient(circle_at_30%_20%,rgba(34,197,94,0.18),transparent_45%)]" />
-                        <img
-                          src={product.image}
-                          alt={product.imageAlt}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute top-3 right-3 bg-green-700 text-white px-3 py-1 rounded-full text-xs font-bold">
-                          {product.level}
-                        </div>
-                      </div>
-                      <div className="flex-1 p-4 sm:p-5 flex flex-col">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-semibold">
-                            {product.category}
-                          </span>
-                        </div>
-                        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 group-hover:text-green-700 transition">
-                          {product.name}
-                        </h3>
-                        <p className="text-xs text-gray-600 mb-3 line-clamp-2">
-                          {product.description}
-                        </p>
-                        <div className="space-y-1 mb-4">
-                          {product.features.map((feature) => (
-                            <div key={feature} className="flex items-center gap-2 text-[11px] text-gray-600">
-                              <Check className="w-3 h-3 text-green-700 flex-shrink-0" />
-                              <span>{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="mt-auto flex items-center justify-between pt-3 border-t">
-                          <p className="text-gray-900 font-bold text-xs sm:text-sm">{product.priceLabel}</p>
-                          <button
-                            onClick={() =>
-                              addItem({
-                                id: product.id,
-                                name: product.name,
-                                price: product.price,
-                                image: product.image,
-                              })
-                            }
-                            className="inline-flex items-center gap-1 rounded-lg bg-green-700 px-3 sm:px-4 py-2 text-[11px] sm:text-xs font-semibold text-white hover:bg-green-800 transition"
-                          >
-                            Add to Cart
-                            <ChevronRight className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    </TiltCard>
-                  </Reveal>
-                ))}
-
-                {filteredProducts.length === 0 && (
-                  <div className="col-span-full rounded-xl border border-dashed border-gray-300 bg-white p-6 text-center text-sm text-gray-600">
-                    No products available in this category yet. Please choose another category or contact us for a custom solution.
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Cart summary */}
-            <aside className="w-full lg:w-80 xl:w-96">
-              <Reveal y={24}>
-                <div className="rounded-2xl bg-white shadow-lg border border-gray-200 p-5 sticky top-24">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900">Your Cart</h3>
-                    <span className="text-xs text-gray-500">
-                      {itemCount} item{itemCount !== 1 ? 's' : ''}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-600 mb-4">
-                    Review your selection and send as a quote request. Our team will respond with final pricing.
-                  </p>
-
-                  <div className="max-h-64 overflow-y-auto space-y-3 mb-4 pr-1">
-                    {items.length === 0 && (
-                      <p className="text-xs text-gray-500">
-                        Your cart is empty. Add helmets, vests, or carriers to get started.
-                      </p>
-                    )}
-                    {items.map((item) => (
-                      <div
-                        key={item.id}
-                        className="flex items-start gap-3 rounded-lg border border-gray-100 bg-gray-50 px-3 py-2"
-                      >
-                        <div className="h-10 w-10 flex-shrink-0 overflow-hidden rounded-md bg-gray-200">
-                          {item.image && (
-                            <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="truncate text-xs font-semibold text-gray-900">{item.name}</p>
-                            <button
-                              onClick={() => removeItem(item.id)}
-                              className="text-gray-400 hover:text-red-500 transition"
-                              aria-label="Remove item"
-                            >
-                              <Trash2 className="h-3.5 w-3.5" />
-                            </button>
-                          </div>
-                        <div className="mt-1 flex items-center justify-between text-[11px] text-gray-500">
-                          <div className="inline-flex items-center gap-1 rounded-full bg-white px-1 py-0.5 border border-gray-200">
-                            <button
-                              type="button"
-                              onClick={() => decrementItem(item.id)}
-                              className="p-1 hover:bg-gray-100 rounded-full"
-                              aria-label="Decrease quantity"
-                            >
-                              <Minus className="h-3 w-3" />
-                            </button>
-                            <span className="px-1 min-w-[16px] text-center text-[11px] font-semibold text-gray-800">
-                              {item.quantity}
-                            </span>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                addItem({
-                                  id: item.id,
-                                  name: item.name,
-                                  price: item.price,
-                                  image: item.image,
-                                })
-                              }
-                              className="p-1 hover:bg-gray-100 rounded-full"
-                              aria-label="Increase quantity"
-                            >
-                              <Plus className="h-3 w-3" />
-                            </button>
-                          </div>
-                          <span>₦{(item.price * item.quantity).toLocaleString()}</span>
-                        </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-gray-200 pt-3 space-y-2 text-xs">
-                    <div className="flex items-center justify-between text-gray-700">
-                      <span className="font-semibold">Estimated Subtotal</span>
-                      <span className="font-bold">₦{subtotal.toLocaleString()}</span>
-                    </div>
-                    <p className="text-[11px] text-gray-500">
-                      Final pricing may vary based on configuration, quantity, and delivery. We will confirm all details
-                      before you commit.
-                    </p>
-                  </div>
-
+      {/* Product grid */}
+      <section className="py-24 px-4 sm:px-6 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col gap-24">
+            {/* Category filter pills */}
+            <div className="flex flex-wrap gap-4 border-b border-white/10 pb-12">
+              {categories.map((cat) => {
+                const isActive = cat === activeCategory;
+                return (
                   <button
-                    disabled={items.length === 0}
-                    className={`mt-4 w-full rounded-lg px-4 py-3 text-xs sm:text-sm font-bold text-white transition ${
-                      items.length === 0
-                        ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-green-700 hover:bg-green-800 shadow-md'
-                    }`}
+                    key={cat}
+                    onClick={() => handleCategoryClick(cat)}
+                    className={`text-[10px] font-bold tracking-[0.3em] uppercase transition ${isActive
+                      ? 'text-white border-b-2 border-white pb-2'
+                      : 'text-gray-600 hover:text-white pb-2'
+                      }`}
                   >
-                    Request Quote for {itemCount || 0} Item{itemCount !== 1 ? 's' : ''}
+                    {cat}
                   </button>
+                );
+              })}
+            </div>
 
-                  {items.length > 0 && (
-                    <button
-                      onClick={clearCart}
-                      className="mt-2 w-full rounded-lg px-4 py-2 text-[11px] font-semibold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition"
-                    >
-                      Clear Cart
-                    </button>
-                  )}
-                </div>
-              </Reveal>
-            </aside>
+            {/* Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-1px bg-white/10">
+              {filteredProducts.map((product, idx) => (
+                <Reveal key={product.id} delay={idx * 0.05}>
+                  <div className="bg-black p-8 group flex flex-col h-full hover:bg-white/5 transition-colors border border-white/5">
+                    <div className="aspect-square grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden mb-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                      />
+                    </div>
+
+                    <div className="flex-1 flex flex-col">
+                      <span className="text-[10px] font-bold tracking-[0.3em] text-gray-600 mb-4 block uppercase">
+                        {product.category}
+                      </span>
+                      <h3 className="text-2xl font-black tracking-tight mb-4 uppercase group-hover:text-white transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-500 text-sm mb-8 line-clamp-2">
+                        {product.description}
+                      </p>
+
+                      <div className="space-y-2 mb-12">
+                        {product.features.slice(0, 3).map((feature) => (
+                          <div key={feature} className="flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">
+                            <div className="w-1 h-1 bg-white/20" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                        <span className="text-[10px] font-bold tracking-[0.3em] text-gray-500 uppercase">SPEC: {product.level}</span>
+                        <button
+                          onClick={() => navigate('/contact')}
+                          className="text-[10px] font-bold tracking-[0.3em] text-white hover:text-gray-400 transition-colors uppercase flex items-center gap-2 group/btn"
+                        >
+                          INQUIRE <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            {filteredProducts.length === 0 && (
+              <div className="py-24 text-center border border-dashed border-white/10">
+                <p className="text-gray-500 font-bold tracking-widest text-xs uppercase">No systems found in this sector.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-24 px-4 sm:px-6 lg:px-24 bg-zinc-950 border-t border-white/5 text-gray-500">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-[0.3em] uppercase">
+          <div>© 2026 WMO TACTICAL</div>
+          <div className="flex gap-12">
+            <a href="#" className="hover:text-white transition-colors">Logistics</a>
+            <a href="#" className="hover:text-white transition-colors">Compliance</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

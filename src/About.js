@@ -50,393 +50,166 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white selection:bg-white/20">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="relative h-[60vh] flex items-center overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0 bg-black z-0" />
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-30 grayscale z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             className="text-center"
           >
             <motion.h1
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, type: "spring", stiffness: 100 }}
+              className="text-6xl sm:text-7xl lg:text-9xl font-black tracking-tighter mb-8 leading-none"
             >
-              About <span className="text-green-400">WMO Gadgets</span>
+              ABOUT <br /> <span className="text-gray-500 uppercase">WMO TACTICAL</span>
             </motion.h1>
-            
+
             <motion.p
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-xl text-gray-400 max-w-2xl mx-auto font-medium"
             >
-              Global Leaders in Advanced Protective Equipment Manufacturing
+              Engineering the future of personal protective equipment for mission-critical operations.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 lg:py-48 px-4 sm:px-6 lg:px-24">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20"
+            className="grid lg:grid-cols-2 gap-24 items-center mb-32"
           >
             {/* Left Content */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
-                Who We Are
+            <motion.div variants={itemVariants} className="space-y-8">
+              <h2 className="text-5xl lg:text-7xl font-black tracking-tighter leading-none">
+                WHO WE <span className="text-gray-500">ARE</span>
               </h2>
-              
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+
+              <div className="space-y-6 text-xl text-gray-400 leading-relaxed font-medium">
                 <p>
-                  WMO Gadgets is a global brand that leverages on modern technology to manufacture personal protective equipment that are built to international standards.
+                  WMO Tactical is a premier defense equipment manufacturer leveraging advanced ballistics and material science to protect those who serve.
                 </p>
-                
+
                 <p>
-                  Our products are widely used by defence and law enforcement agencies. We have a Research and Development unit that continuously develops innovative products and strives to keep ahead of time.
-                </p>
-                
-                <p>
-                  We rely on the exploration of new ballistic technologies and materials ensuring that performance and safety of lives are our highest priority.
+                  Our R&D division continuously pushes the boundaries of survivability, ensuring frontline personnel are equipped with battle-tested armor and communications.
                 </p>
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="pt-4 flex flex-wrap gap-4"
-              >
+              <div className="pt-6 flex flex-wrap gap-8">
                 {[
-                  { icon: '🌍', label: 'Global Reach' },
-                  { icon: '✅', label: 'ISO Certified' },
-                  { icon: '⭐', label: '15+ Years' }
+                  { value: 'NIJ', label: 'CERTIFIED' },
+                  { value: '15+', label: 'YEARS EXP' },
+                  { value: 'GLOBAL', label: 'REACH' }
                 ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1.05, x: 5 }}
-                    className="flex items-center gap-2 text-green-700 font-semibold bg-green-50 px-4 py-2 rounded-lg cursor-pointer transition"
-                  >
-                    <span>{item.icon}</span>
-                    {item.label}
-                  </motion.div>
+                  <div key={idx} className="group cursor-default">
+                    <div className="text-3xl font-black tracking-tighter group-hover:text-green-500 transition-colors uppercase">{item.value}</div>
+                    <div className="text-[10px] font-bold tracking-[0.3em] text-gray-600 uppercase mt-1">{item.label}</div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </motion.div>
 
             {/* Right Image */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center group"
+              className="relative aspect-square grayscale border border-white/10 overflow-hidden"
             >
-              <motion.div
-                className="relative w-full aspect-square max-w-md rounded-2xl overflow-hidden shadow-2xl"
-                whileHover={{ scale: 1.05 }}
-                animate={{
-                  boxShadow: [
-                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)",
-                    "0 25px 30px -5px rgba(34, 197, 94, 0.3)",
-                    "0 20px 25px -5px rgba(34, 197, 94, 0.2)"
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <motion.img 
-                  src="/images/Assault-Vest-Header.jpg" 
-                  alt="WMO Assault Vest" 
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end p-6"
-                >
-                  <p className="text-white font-semibold">Premium Tactical Vest</p>
-                </motion.div>
-              </motion.div>
+              <img
+                src="https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="WMO Facility"
+                className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-1000"
+              />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 text-center mb-16"
-          >
-            Our Purpose
-          </motion.h2>
+      <section className="py-24 lg:py-48 bg-zinc-950 border-y border-white/5 px-4 sm:px-6 lg:px-24">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-1px bg-white/5">
+          {/* Mission */}
+          <div className="bg-zinc-950 p-12 lg:p-24 hover:bg-white/5 transition-colors">
+            <span className="text-[10px] font-bold tracking-[0.5em] text-gray-500 mb-12 block">MISSION</span>
+            <h3 className="text-3xl lg:text-5xl font-black tracking-tighter mb-8 leading-tight">
+              PROMOTING SURVIVABILITY THROUGH <span className="text-gray-500 uppercase">INNOVATION.</span>
+            </h3>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              To leverage world-class R&D, offering proven protective solutions for the empowerment and safety of personnel in high-threat environments.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, boxShadow: "0 30px 40px rgba(34, 197, 94, 0.15)" }}
-              className="bg-white rounded-2xl shadow-lg p-8 sm:p-10 border-l-4 border-green-700 cursor-pointer transition"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <motion.div
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-green-700 p-3 rounded-lg cursor-pointer"
-                >
-                  <Target className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900">Mission</h3>
-              </div>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                To leverage world class research and development, offering proven protective clothing and accessories for the empowerment, protection and comfort of personnel in service.
-              </p>
-            </motion.div>
-
-            {/* Vision */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -10, boxShadow: "0 30px 40px rgba(34, 197, 94, 0.15)" }}
-              className="bg-white rounded-2xl shadow-lg p-8 sm:p-10 border-l-4 border-green-700 cursor-pointer transition"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <motion.div
-                  whileHover={{ rotate: -360, scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-green-700 p-3 rounded-lg cursor-pointer"
-                >
-                  <Eye className="w-8 h-8 text-white" />
-                </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900">Vision</h3>
-              </div>
-              
-              <p className="text-lg text-gray-700 leading-relaxed">
-                To be the number one protective wear company of choice for the Armed Forces and Law Enforcement Agencies across Africa.
-              </p>
-            </motion.div>
+          {/* Vision */}
+          <div className="bg-zinc-950 p-12 lg:p-24 hover:bg-white/5 transition-colors">
+            <span className="text-[10px] font-bold tracking-[0.5em] text-gray-500 mb-12 block">VISION</span>
+            <h3 className="text-3xl lg:text-5xl font-black tracking-tighter mb-8 leading-tight">
+              THE STANDARD IN <span className="text-gray-500 uppercase">PROTECTIVE</span> SYSTEMS.
+            </h3>
+            <p className="text-gray-400 text-lg leading-relaxed">
+              To be the definitive choice for defense forces and law enforcement agencies across the continent and beyond.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 text-center mb-16"
-          >
-            Our Core Values
-          </motion.h2>
+      {/* Values Grid */}
+      <section className="py-24 lg:py-48 px-4 sm:px-6 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl lg:text-8xl font-black tracking-tighter mb-24 leading-none">
+            CORE <span className="text-gray-500">VALUES</span>
+          </h2>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {values.map((value, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -15, boxShadow: "0 25px 35px rgba(0, 0, 0, 0.1)" }}
-                className="bg-gray-50 rounded-xl p-8 text-center hover:bg-gradient-to-br hover:from-green-50 hover:to-green-100 transition duration-300 cursor-pointer border border-transparent hover:border-green-300"
-              >
-                <motion.div
-                  className="flex justify-center mb-6"
-                  whileHover={{ scale: 1.15, rotate: 5 }}
-                >
-                  <div className="bg-green-700 p-4 rounded-lg group-hover:bg-green-800 transition hover:shadow-lg hover:shadow-green-500/50">
-                    <value.icon className="w-8 h-8 text-white" />
-                  </div>
-                </motion.div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-700 transition">
-                  {value.title}
-                </h3>
-                
-                <p className="text-gray-600 group-hover:text-gray-700 transition">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Manufacturing Excellence */}
-      <section className="py-20 lg:py-28 bg-gradient-to-r from-black to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-8">
-              Manufacturing Excellence
-            </h2>
-            
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Due to flexibility in the manufacturing process, our designs can be tailor-made to every customer's particular requirements. Durable and high quality materials are used on all garments to ensure that they withstand the rigors of military use and abuse.
-            </p>
-
-            <motion.div
-              className="grid md:grid-cols-3 gap-8 mt-12"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {[
-                { number: '100%', label: 'Custom Designs' },
-                { number: 'ISO', label: 'Certified' },
-                { number: '24/7', label: 'Support' }
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.08, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.3)" }}
-                  className="bg-green-700/20 border border-green-700/50 rounded-lg p-8 cursor-pointer transition hover:bg-green-700/30 hover:border-green-500"
-                >
-                  <div className="text-4xl font-bold text-green-400 mb-2 hover:text-green-300 transition">
-                    {item.number}
-                  </div>
-                  <div className="text-gray-300">
-                    {item.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Facilities Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 text-center mb-16"
-          >
-            Our State-of-the-Art Facilities
-          </motion.h2>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid md:grid-cols-3 gap-8"
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-1px bg-white/10">
             {[
-              { src: '/images/facility-300x174.jpg', alt: 'Modern Manufacturing Facility', title: 'Manufacturing' },
-              { src: '/images/facility2-300x200.jpg', alt: 'Quality Control Lab', title: 'Quality Control' },
-              { src: '/images/facility3-300x157.jpg', alt: 'Production Floor', title: 'Production' }
-            ].map((facility, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -15 }}
-                className="relative overflow-hidden rounded-xl shadow-lg group cursor-pointer"
-              >
-                <motion.img
-                  src={facility.src}
-                  alt={facility.alt}
-                  className="w-full h-64 object-cover"
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end p-6"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                >
-                  <h3 className="text-white font-bold text-lg mb-2">{facility.title}</h3>
-                  <p className="text-gray-300 text-sm">{facility.alt}</p>
-                </motion.div>
-                <motion.div
-                  className="absolute inset-0 border-2 border-green-500 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl"
-                />
-              </motion.div>
+              { title: 'INNOVATION', desc: 'Cutting-edge protective R&D.' },
+              { title: 'INTEGRITY', desc: 'Transparency in every operation.' },
+              { title: 'PRECISION', desc: 'Uncompromising quality control.' },
+              { title: 'SERVICE', desc: 'Dedicated to those who protect.' }
+            ].map((value, idx) => (
+              <div key={idx} className="bg-black p-12 hover:bg-white/5 transition-colors">
+                <span className="text-[10px] font-bold tracking-[0.3em] text-gray-500 mb-8 block">0{idx + 1}</span>
+                <h3 className="text-xl font-black tracking-tight mb-4 uppercase">{value.title}</h3>
+                <p className="text-gray-500 text-sm">{value.desc}</p>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-gray-900 mb-6"
-          >
-            Join Us in Our Mission
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto mb-8"
-          >
-            Experience the difference that quality, innovation, and dedication to excellence can make.
-          </motion.p>
-
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.1, boxShadow: "0 20px 40px rgba(34, 197, 94, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
+      <section className="py-24 lg:py-48 bg-zinc-950 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 text-center">
+          <h2 className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tighter mb-12">
+            JOIN OUR <span className="text-gray-500">EQUIPE</span>.
+          </h2>
+          <button
             onClick={() => navigate('/contact')}
-            className="bg-green-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg inline-flex items-center gap-2 group"
+            className="px-12 py-5 border border-white/20 hover:bg-white text-white hover:text-black font-bold tracking-[0.3em] text-xs uppercase transition-all"
           >
-            Get in Touch
-            <motion.span
-              className="inline-block"
-              whileHover={{ x: 5 }}
-            >
-              <ArrowRight className="w-5 h-5" />
-            </motion.span>
-          </motion.button>
+            Contact Defense Solutions
+          </button>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-4 sm:px-6 lg:px-24 border-t border-white/5 text-[10px] font-bold tracking-[0.3em] text-gray-600 uppercase flex flex-col sm:flex-row justify-between items-center gap-8">
+        <div>© 2026 WMO TACTICAL</div>
+        <div className="flex gap-12">
+          <a href="#" className="hover:text-white transition-colors">Privacy</a>
+          <a href="#" className="hover:text-white transition-colors">Terms</a>
+        </div>
+      </footer>
     </div>
   );
 }

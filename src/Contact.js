@@ -68,7 +68,7 @@ export default function Contact() {
     // Simulate form submission
     console.log('Form submitted:', formData);
     setSubmitted(true);
-    
+
     // Reset form after 3 seconds
     setTimeout(() => {
       setFormData({
@@ -83,331 +83,169 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white selection:bg-white/20">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjAzIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <section className="relative h-[50vh] flex items-center overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0 bg-black z-0" />
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/9988769/pexels-photo-9988769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-20 grayscale z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
             className="text-center"
           >
             <motion.h1
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8, type: "spring", stiffness: 100 }}
+              className="text-6xl sm:text-7xl lg:text-9xl font-black tracking-tighter mb-8 leading-none uppercase"
             >
-              Get in <span className="text-green-400">Touch</span>
+              GET IN <span className="text-gray-500">TOUCH</span>
             </motion.h1>
-            
+
             <motion.p
-              className="text-xl text-gray-300 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-xl text-gray-400 max-w-2xl mx-auto font-medium"
             >
-              We're here to answer any questions about our protective equipment and services
+              Direct channels to our specialized defense and tactical solutions teams.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 mb-20">
+      <section className="py-24 lg:py-48 px-4 sm:px-6 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-32 mb-32">
             {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {contactInfo.map((info, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.2, duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-50 rounded-xl p-6 sm:p-8 text-center"
-                >
-                  <div className={`${info.color} w-14 h-14 rounded-lg flex items-center justify-center mx-auto mb-4`}>
-                    <info.icon className="w-7 h-7 text-white" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {info.title}
-                  </h3>
-                  
-                  <div className="space-y-2">
-                    {info.details.map((detail, i) => (
-                      <p key={i} className="text-gray-600 text-sm">
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="space-y-16">
+              <h2 className="text-5xl lg:text-7xl font-black tracking-tighter leading-none mb-12">
+                DEFENSE <br /> <span className="text-gray-500 uppercase">CHANNELS</span>
+              </h2>
+
+              <div className="grid gap-12">
+                {contactInfo.map((info, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1, duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <span className="text-[10px] font-bold tracking-[0.5em] text-gray-600 mb-6 block uppercase">{info.title}</span>
+                    <div className="space-y-2">
+                      {info.details.map((detail, i) => (
+                        <p key={i} className="text-2xl font-black tracking-tight group-hover:text-green-500 transition-colors">
+                          {detail}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
-            {/* Interactive Map */}
+            {/* Form Section */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="flex items-center justify-center"
+              className="bg-zinc-950 p-8 lg:p-16 border border-white/5"
             >
-              <LocationMap 
-                // Map is internally centered on the HQ coordinates
-              />
-            </motion.div>
-          </div>
-
-          {/* Form Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-8 sm:p-12 shadow-lg">
-              <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-                Send us a Message
-              </h2>
+              <h3 className="text-[10px] font-bold tracking-[0.5em] text-gray-500 mb-12 uppercase">SECURE INQUIRY</h3>
 
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
+                  className="text-center py-24"
                 >
-                  <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">
-                    Thank you for contacting us. We'll get back to you shortly.
+                  <CheckCircle className="w-16 h-16 text-white mx-auto mb-8" />
+                  <h3 className="text-3xl font-black tracking-tight mb-4 uppercase">TRANSMITTED</h3>
+                  <p className="text-gray-500 font-medium">
+                    Your request has been securely logged. Our team will respond shortly.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Full Name
-                      </label>
+                <form onSubmit={handleSubmit} className="space-y-12">
+                  <div className="space-y-8">
+                    <div className="relative group">
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 transition"
-                        placeholder="John Doe"
+                        className="w-full bg-transparent border-b border-white/20 py-4 text-xl font-bold focus:outline-none focus:border-white transition-colors peer placeholder:text-transparent"
+                        placeholder="NAME"
+                        id="name"
                       />
-                    </motion.div>
+                      <label htmlFor="name" className="absolute left-0 top-0 text-[10px] font-bold tracking-[0.3em] text-gray-500 peer-placeholder-shown:text-xl peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] transition-all uppercase">FULL NAME</label>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 }}
-                      viewport={{ once: true }}
-                    >
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address
-                      </label>
+                    <div className="relative group">
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 transition"
-                        placeholder="john@example.com"
+                        className="w-full bg-transparent border-b border-white/20 py-4 text-xl font-bold focus:outline-none focus:border-white transition-colors peer placeholder:text-transparent"
+                        placeholder="EMAIL"
+                        id="email"
                       />
-                    </motion.div>
-                  </div>
+                      <label htmlFor="email" className="absolute left-0 top-0 text-[10px] font-bold tracking-[0.3em] text-gray-500 peer-placeholder-shown:text-xl peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] transition-all uppercase">EMAIL ADDRESS</label>
+                    </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.3 }}
-                      viewport={{ once: true }}
-                    >
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 transition"
-                        placeholder="+234 902 441 9637"
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4 }}
-                      viewport={{ once: true }}
-                    >
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        name="subject"
-                        value={formData.subject}
+                    <div className="relative group">
+                      <textarea
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 transition"
-                        placeholder="Product Inquiry"
-                      />
-                    </motion.div>
+                        rows="4"
+                        className="w-full bg-transparent border-b border-white/20 py-4 text-xl font-bold focus:outline-none focus:border-white transition-colors peer placeholder:text-transparent resize-none"
+                        placeholder="MESSAGE"
+                        id="message"
+                      ></textarea>
+                      <label htmlFor="message" className="absolute left-0 top-0 text-[10px] font-bold tracking-[0.3em] text-gray-500 peer-placeholder-shown:text-xl peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] transition-all uppercase">INQUIRY DETAILS</label>
+                    </div>
                   </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows="6"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 transition resize-none"
-                      placeholder="Tell us more about your inquiry..."
-                    ></textarea>
-                  </motion.div>
-
-                  <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <button
                     type="submit"
-                    className="w-full bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2"
+                    className="w-full py-6 bg-white text-black font-black tracking-[0.3em] text-xs uppercase hover:bg-gray-200 transition-colors"
                   >
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </motion.button>
+                    SEND INQUIRY
+                  </button>
                 </form>
               )}
+            </motion.div>
+          </div>
+
+          {/* Map / Location Map Section */}
+          <div className="grayscale border-t border-white/5 py-24">
+            <span className="text-[10px] font-bold tracking-[0.5em] text-gray-600 mb-12 block uppercase text-center">GLOBAL HQ</span>
+            <div className="max-w-5xl mx-auto bg-zinc-950 p-4 border border-white/10 overflow-hidden">
+              <LocationMap />
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 text-center mb-16"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-6"
-          >
-            {[
-              {
-                q: "What are the delivery timeframes?",
-                a: "We offer fast delivery across Nigeria and West Africa. Standard delivery typically takes 5-7 business days. Express options available for urgent orders."
-              },
-              {
-                q: "Do you offer bulk discounts?",
-                a: "Yes! We provide special pricing for organizations, government agencies, and large orders. Contact our sales team for a custom quote."
-              },
-              {
-                q: "Are all products NIJ certified?",
-                a: "All our protective equipment meets or exceeds international ballistic standards including NIJ certification. Each product includes detailed specifications."
-              },
-              {
-                q: "Can you customize products for our organization?",
-                a: "Absolutely! Due to our flexible manufacturing process, we can tailor designs to meet your specific requirements. Contact us to discuss customization options."
-              }
-            ].map((faq, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition"
-              >
-                <h3 className="text-lg font-bold text-gray-900 mb-3">
-                  {faq.q}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.a}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Footer */}
+      <footer className="py-24 px-4 sm:px-6 lg:px-24 bg-zinc-950 border-t border-white/5 text-gray-500">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-[0.3em] uppercase">
+          <div>© 2026 WMO TACTICAL. ALL RIGHTS RESERVED.</div>
+          <div className="flex gap-12">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+          </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-black to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold mb-6"
-          >
-            Ready to Protect Your Team?
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-300 max-w-2xl mx-auto mb-8"
-          >
-            Reach out to our team today and discover how WMO Gadgets can meet your protective equipment needs.
-          </motion.p>
-
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="bg-green-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-800 transition shadow-lg"
-          >
-            Contact Us Now
-          </motion.button>
-        </div>
-      </section>
+      </footer>
     </div>
   );
 }
