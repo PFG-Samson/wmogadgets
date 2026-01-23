@@ -36,21 +36,20 @@ export default function Header() {
       </div>
 
       {/* Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 sm:h-24">
-            <div className="flex items-center gap-12">
-              <Link to="/" className="flex items-center gap-2 group">
+            <div className="flex items-center gap-24">
+              <Link to="/" className="flex items-center group">
                 <motion.div
-                  className="flex items-center gap-2"
-                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center"
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <span className="text-2xl font-black tracking-tighter text-white">WMO</span>
-                  <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase hidden sm:block">Tactical</span>
+                  <img src="/images/wmo-logo.jpg" alt="WMO Logo" className="h-12 w-auto brightness-110" />
                 </motion.div>
               </Link>
 
-              <nav className="hidden lg:flex gap-10">
+              <nav className="hidden lg:flex gap-12">
                 {[
                   { name: 'DEFENSE', to: '/products' },
                   { name: 'SOLUTIONS', to: '/products' },
@@ -60,7 +59,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     to={item.to}
-                    className="text-[11px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition-colors"
+                    className="text-[11px] font-black tracking-[0.25em] text-gray-500 hover:text-white transition-all hover:tracking-[0.3em]"
                   >
                     {item.name}
                   </Link>
@@ -101,7 +100,7 @@ export default function Header() {
               exit={{ opacity: 0, y: -20 }}
             >
               <div className="flex justify-between items-center h-20 px-4 border-b border-white/10">
-                <span className="text-2xl font-black text-white">WMO</span>
+                <img src="/images/wmo-logo.jpg" alt="WMO Logo" className="h-10 w-auto" />
                 <button onClick={() => setMobileMenuOpen(false)} className="text-white">
                   <X className="w-8 h-8" />
                 </button>

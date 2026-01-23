@@ -43,19 +43,19 @@ function WMOLandingPage() {
 
   const slides = [
     {
-      title: 'DEFENSE SOLUTIONS',
-      subtitle: 'From advanced ballistic protection to tactical communication, enabling safety for those who serve.',
-      image: 'https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      title: 'DEFENSE SYSTEMS',
+      subtitle: 'Engineered for maximum survivability in high-threat environments.',
+      image: '/images/front-view-soldiers-war-zone.jpg',
     },
     {
-      title: 'TACTICAL GEAR',
-      subtitle: 'Specialized equipment designed for law enforcement and private security professionals.',
-      image: 'https://images.pexels.com/photos/9988769/pexels-photo-9988769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      title: 'MISSION READY',
+      subtitle: 'Unified protection systems for modern warfare and urban security.',
+      image: '/images/side-view-soldier-fighting-war.jpg',
     },
     {
-      title: 'BALLISTIC SYSTEMS',
-      subtitle: 'NIJ-certified armor plates and helmets engineered for maximum protection.',
-      image: 'https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      title: 'TACTICAL EDGE',
+      subtitle: 'Battle-tested equipment designed for law enforcement and defense forces.',
+      image: '/images/close-up-american-soldier-keeping-sight-modern-gun.jpg',
     }
   ];
 
@@ -159,7 +159,7 @@ function WMOLandingPage() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-xl text-gray-400 max-w-lg leading-relaxed mb-6">
-              WMO Tactical provides unified ballistic protection systems for modern warfare and urban security. Our equipment is battle-tested and NIJ-certified.
+              WMO Gadgets provides unified ballistic protection systems for modern warfare and urban security. Our equipment is battle-tested and NIJ-certified.
             </p>
             <div className="h-px w-32 bg-white/20" />
           </Reveal>
@@ -190,7 +190,7 @@ function WMOLandingPage() {
       <section className="relative h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=800"
+            src="/images/male-soldier-wearing-americans-army-uniform-glasses.jpg"
             className="w-full h-full object-cover opacity-30 grayscale"
             alt="Mission"
           />
@@ -218,14 +218,14 @@ function WMOLandingPage() {
       <section className="py-24 sm:py-32 lg:py-48 px-4 sm:px-6 lg:px-24 border-t border-white/10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-24">
           {[
-            { label: 'DELIVERED UNITS', value: '50K+' },
+            { label: 'DELIVERED SYSTEMS', value: '50K+' },
             { label: 'NIJ CERTIFIED', value: '100%' },
-            { label: 'YEARS IN FIELD', value: '15+' },
-            { label: 'OFFICE LOCATIONS', value: '03+' }
+            { label: 'GLOBAL OPERATIONS', value: '15+' },
+            { label: 'CONTRACTED DEPARTMENTS', value: '120+' }
           ].map((stat, i) => (
-            <div key={i}>
-              <div className="text-6xl sm:text-7xl font-black tracking-tighter mb-4">{stat.value}</div>
-              <div className="text-[10px] font-bold tracking-[0.3em] text-gray-500 uppercase">{stat.label}</div>
+            <div key={i} className="group cursor-default">
+              <div className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter mb-4 group-hover:text-amber-600 transition-colors">{stat.value}</div>
+              <div className="text-[10px] font-bold tracking-[0.4em] text-gray-600 uppercase group-hover:text-gray-400 transition-colors">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -235,7 +235,7 @@ function WMOLandingPage() {
       <footer className="py-24 px-4 sm:px-6 lg:px-24 bg-zinc-950 border-t border-white/5 text-gray-500">
         <div className="grid lg:grid-cols-2 gap-24 mb-24">
           <div>
-            <div className="text-3xl font-black text-white tracking-tighter mb-8">WMO TACTICAL.</div>
+            <div className="text-3xl font-black text-white tracking-tighter mb-8">WMO GADGETS.</div>
             <p className="max-w-sm leading-relaxed text-sm">
               Premier ballistic protection and tactical equipment supplier. Partnering with global defense forces to ensure maximum survivability.
             </p>

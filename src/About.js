@@ -56,7 +56,13 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-black z-0" />
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-30 grayscale z-10" />
+        <div className="absolute inset-0 z-10">
+          <img
+            src="/images/shot-armenian-military-soldiers-training-dry-field.jpg"
+            alt="Hero Background"
+            className="w-full h-full object-cover opacity-30 grayscale"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
@@ -69,7 +75,7 @@ export default function About() {
             <motion.h1
               className="text-6xl sm:text-7xl lg:text-9xl font-black tracking-tighter mb-8 leading-none"
             >
-              ABOUT <br /> <span className="text-gray-500 uppercase">WMO TACTICAL</span>
+              ABOUT <br /> <span className="text-gray-500 uppercase">WMO GADGETS</span>
             </motion.h1>
 
             <motion.p
@@ -99,7 +105,7 @@ export default function About() {
 
               <div className="space-y-6 text-xl text-gray-400 leading-relaxed font-medium">
                 <p>
-                  WMO Tactical is a premier defense equipment manufacturer leveraging advanced ballistics and material science to protect those who serve.
+                  WMO Gadgets is a premier defense equipment manufacturer leveraging advanced ballistics and material science to protect those who serve.
                 </p>
 
                 <p>
@@ -127,7 +133,7 @@ export default function About() {
               className="relative aspect-square grayscale border border-white/10 overflow-hidden"
             >
               <img
-                src="https://images.pexels.com/photos/7988740/pexels-photo-7988740.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="/images/still-life-soldier-helmet.jpg"
                 alt="WMO Facility"
                 className="w-full h-full object-cover opacity-60 hover:scale-105 transition-transform duration-1000"
               />
@@ -204,7 +210,7 @@ export default function About() {
 
       {/* Footer */}
       <footer className="py-12 px-4 sm:px-6 lg:px-24 border-t border-white/5 text-[10px] font-bold tracking-[0.3em] text-gray-600 uppercase flex flex-col sm:flex-row justify-between items-center gap-8">
-        <div>© 2026 WMO TACTICAL</div>
+        <div>© 2026 WMO GADGETS</div>
         <div className="flex gap-12">
           <a href="#" className="hover:text-white transition-colors">Privacy</a>
           <a href="#" className="hover:text-white transition-colors">Terms</a>

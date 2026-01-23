@@ -89,7 +89,13 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 bg-black z-0" />
-        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/9988769/pexels-photo-9988769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')] opacity-20 grayscale z-10" />
+        <div className="absolute inset-0 z-10">
+          <img
+            src="/images/male-soldier-wearing-americans-army-uniform-glasses.jpg"
+            alt="Hero Background"
+            className="w-full h-full object-cover opacity-20 grayscale"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black z-20" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
@@ -239,7 +245,7 @@ export default function Contact() {
       {/* Footer */}
       <footer className="py-24 px-4 sm:px-6 lg:px-24 bg-zinc-950 border-t border-white/5 text-gray-500">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-8 text-[10px] font-bold tracking-[0.3em] uppercase">
-          <div>© 2026 WMO TACTICAL. ALL RIGHTS RESERVED.</div>
+          <div>© 2026 WMO GADGETS. ALL RIGHTS RESERVED.</div>
           <div className="flex gap-12">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
